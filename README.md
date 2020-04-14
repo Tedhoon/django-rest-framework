@@ -17,8 +17,9 @@
 </br>
 
 ## :memo: Content List
-
-- [What is DRF?](https://github.com/Tedhoon/django-rest-framework/blob/master/What_is_DRF.md)
+- INTRO
+    - [Rest API](https://github.com/Tedhoon/django-rest-framework/blob/master/Rest_API.md)
+    - [What is DRF?](https://github.com/Tedhoon/django-rest-framework/blob/master/What_is_DRF.md)
 
 ## Reference
 - [Github-official](https://github.com/encode/django-rest-framework)
