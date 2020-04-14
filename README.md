@@ -19,7 +19,9 @@
 ## :memo: Content List
 - INTRO
     - [Rest API](https://github.com/Tedhoon/django-rest-framework/blob/master/Rest_API.md)
+    - [Httpie & Http](https://github.com/Tedhoon/django-rest-framework/blob/master/Httpie.md)
     - [What is DRF?](https://github.com/Tedhoon/django-rest-framework/blob/master/What_is_DRF.md)
+
 
 ## Reference
 - [Github-official](https://github.com/encode/django-rest-framework)
