@@ -1,6 +1,5 @@
 # What is DRF
-Django 안에서 RESTful API 서버를 쉽게 구축할 수 있도록 돕는 오픈 소스 라이브러리
-
+<strong>Django 안에서 RESTful API 서버를 쉽게 구축할 수 있도록 돕는 오픈 소스 라이브러리</strong>
 
 ### install
 ```bash
@@ -49,4 +48,4 @@ router.register('myurl',MyView)
 urlpatterns = [
     path('',include(router.urls)),
 ]
-``
+```
