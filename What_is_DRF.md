@@ -6,7 +6,7 @@
 pip install djangorestframework
 ```
 
-### 기본세팅
+### 기본세팅 
 
 ```python
 # settings.py
