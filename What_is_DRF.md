@@ -12,9 +12,7 @@ pip install djangorestframework
 # settings.py
 
 INSTALLED_APP = [
-    .
-    .
-    .
+    ...
     'rest_framework',
 ]
 ```
