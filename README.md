@@ -24,9 +24,9 @@
 
 - MAIN
     - [serializer](https://github.com/Tedhoon/django-rest-framework/blob/master/main/serializer.md)
+    - [Native](https://github.com/Tedhoon/django-rest-framework/blob/master/main/Native.md)
     - [APIView](https://github.com/Tedhoon/django-rest-framework/blob/master/main/APIView.md)
     - [Mixins](https://github.com/Tedhoon/django-rest-framework/blob/master/main/Mixins.md)
-    - [GenericCBV](https://github.com/Tedhoon/django-rest-framework/blob/master/main/GenericCBV.md)
     - [ViewSet](https://github.com/Tedhoon/django-rest-framework/blob/master/main/ViewSet.md)
     
 
