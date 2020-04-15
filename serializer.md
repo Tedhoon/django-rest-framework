@@ -38,4 +38,15 @@ from django.core import serializers
 data = serializers.serialize('xml', SomeModel.objects.all(), fields=('name','size'))
 ```
 
+## django의 ModelSerializer 기능
+```python
+from rest_framework import serializers
+
+class MySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = 모델
+        fields = 필드들
+        read_only_fields = ('field명') 
+        # read_only_fields 또는 write_only_fields 지정 가능"
+```
 
