@@ -18,13 +18,17 @@
 
 ## :memo: Content List
 - INTRO
-    - [Rest API](https://github.com/Tedhoon/django-rest-framework/blob/master/Rest_API.md)
-    - [Httpie & Http](https://github.com/Tedhoon/django-rest-framework/blob/master/Httpie.md)
-    - [What is DRF?](https://github.com/Tedhoon/django-rest-framework/blob/master/What_is_DRF.md)
+    - [Rest API](https://github.com/Tedhoon/django-rest-framework/blob/master/intro/Rest_API.md)
+    - [Httpie & Http](https://github.com/Tedhoon/django-rest-framework/blob/master/intro/Httpie.md)
+    - [What is DRF?](https://github.com/Tedhoon/django-rest-framework/blob/master/intro/What_is_DRF.md)
 
 - MAIN
-    - [serializer](https://github.com/Tedhoon/django-rest-framework/blob/master/serializer.md)
-    - [ViewSet](https://github.com/Tedhoon/django-rest-framework/blob/master/ViewSet.md)
+    - [serializer](https://github.com/Tedhoon/django-rest-framework/blob/master/main/serializer.md)
+    - [APIView](https://github.com/Tedhoon/django-rest-framework/blob/master/main/APIView.md)
+    - [Mixins](https://github.com/Tedhoon/django-rest-framework/blob/master/main/Mixins.md)
+    - [GenericCBV](https://github.com/Tedhoon/django-rest-framework/blob/master/main/GenericCBV.md)
+    - [ViewSet](https://github.com/Tedhoon/django-rest-framework/blob/master/main/ViewSet.md)
+    
 
 
 ## Reference
