@@ -8,7 +8,7 @@
 
 <br>
 
-### REST architecture
+## REST architecture
 
 1. Server - Client
 2. STATELESS : 클라이언트의 이전 상태를 기록하지 않는 상태 (ex : http)
@@ -19,7 +19,7 @@
 
 <br>
 
-### 왜써야할까❔ 
+## 왜써야할까❔ 
 1. 백엔드와 프론트엔드의 완전한 분리
     - Http method와 Uri를 적절히 사용하여 백엔드를 표현해줄 수 있기 때문에 프론트엔드와의 협업 시 해당사항만 제공하면 된다. 
     > 쉽게말해서 진짜 백엔드 api만 보내놓고 놀 수 있음
@@ -34,7 +34,7 @@
 
 <br>
 
-### 디자인 원칙
+## 디자인 원칙
 
 1. URL 디자인 원칙 : 자원에 대한 처리를 주소에 나타내지않는다(HTTP method는 내부적으로 처리하도록), 어떤 자원인지 주소에 명확하게 나타냄
     - ```bash
@@ -50,7 +50,7 @@
 
 <br>
 
-### HTTP method
+## HTTP method
 |Method|role|
 |---|---|
 |GET|해당 리소스를 조회|
@@ -84,7 +84,7 @@ PATCH /body/1
 
 <br>
 
-### backend 설계 예시 with Http method
+## backend 설계 예시 with Http method
 |URL|METHOD|Description|Params|Return|
 |---|---|---|---|---|
 |/api/posts|`GET`|전체 글을 조회합니다.||[...{Post}]|
