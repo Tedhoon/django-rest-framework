@@ -2,13 +2,13 @@
 
 `CLI로 request, response를(http호출) 테스트 해볼 수 있는 Test용 라이브러리`
 
-### Install
+## Install
 
 ```bash
 pip install --upgrade httpie
 ```
 
-### 형식
+## 형식
 ```bash
 http [flags] [method] URL [item[item]]
 ```
@@ -25,13 +25,13 @@ http --json POST 대상주소 GET인자 = 값 POST인자 == 값
 http --form POST 대상주소 GET인자 = 값 POST인자 == 값
 ```
 
-### 예시
+## 예시
 ```bash
 http --form post "http~" title="title" body="body"
 ```
 
 
-### Http Response code 
+## Http Response code 
 
 > http 응답상태코드로 request에 대한 response를 개괄적으로 알아 볼 수 있습니당
 
