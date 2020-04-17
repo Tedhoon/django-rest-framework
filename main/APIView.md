@@ -95,3 +95,15 @@ class SnippetDetail(APIView):
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 ```
+
+## 라우팅
+> as_view()로 라우팅해줍니다.
+```python
+from django.urls import path, include
+from . import views
+
+urlpatterns = [
+    path('post/', views.PostListAPIView.as_view()),
+    path('post/<int:pk>/',views.PostDetailAPIView.as_view()),
+]
+```
