@@ -27,7 +27,7 @@ from rest_framework import serializers
 class MySerializer(serializers.ModelSerializer):
     class Meta:
         model = # 직렬화 시킬 모델
-        field = # 직렬화 시킬 필드
+        fields = # 직렬화 시킬 필드
 ```
 - tip : django에서 만들어진 ModelSerializer은 유효성검사도 해줍니당
 
