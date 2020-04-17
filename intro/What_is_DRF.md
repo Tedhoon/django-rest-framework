@@ -36,7 +36,7 @@ class MySerializer(serializers.ModelSerializer):
 ```python
 # urls.py
 
-from rest_framework.router import DefaultRouter
+from rest_framework.routers import DefaultRouter
 from views.py import MyView
 
 
