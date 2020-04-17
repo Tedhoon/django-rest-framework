@@ -97,7 +97,7 @@ class SnippetDetail(APIView):
 ```
 
 ## 라우팅
-> as_view()로 라우팅해줍니다.
+> as_view()로 라우팅해줍니다.(CBV 사용시)
 ```python
 from django.urls import path, include
 from . import views
