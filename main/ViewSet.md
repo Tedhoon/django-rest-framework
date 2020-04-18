@@ -1,8 +1,8 @@
 # ViewSet
 
-mixin과 generic APIView를 상속받음
+> mixin과 generic APIView를 상속받음
 
-장식자를 통해서 CRUD가 아닌 다른 logic들을 구현하기에 용이👏
+> 장식자를 통해서 CRUD가 아닌 다른 logic들을 구현하기에 용이👏
 
 <br>
 
@@ -103,9 +103,15 @@ class SnippetViewSet(viewsets.ModelViewSet):
 
 Custom API method들을 만들기 위해 사용
 
+```python
+@action(method=None, detail=None, url_path=None, url_name=None)
+```
 ####  method 호출 방식
 - GET(default)
 - POST 👈 따로 지정해주어야함!
+    ```python
+    @action(method=['post'])
+    ```
 
 #### renderer_classes
 rendering 시킬 Response의 형태(format)를 지정해줄 수 있음.
@@ -120,3 +126,4 @@ rendering 시킬 Response의 형태(format)를 지정해줄 수 있음.
 #### url
 
 url은 default값으로 custom method의 이름으로 지정됨
+- ~*/method_name
