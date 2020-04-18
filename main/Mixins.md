@@ -16,7 +16,8 @@
 generics 안의 GenericAPIView를 사용하여 target queryset과 serializer_class를 정의해주고
 mixins 안의 각 method들을 사용하여 기능을 적절히 뽑아다 쓰는 방식
 
- 
+<br>
+
 ## Mixin 활용
 
 ```python
@@ -72,3 +73,29 @@ class SnippetDetail(mixins.RetrieveModelMixin,
         # DestroyModelMixin의 destroy() 메서드 리턴
 ```
 
+
+<br>
+
+
+## mixins를 포함한 generics의 APIVIEW
+
+물론 이 또한 반복되는 답습이 있기 때문에 합쳐놓은 CBV가 존재한다.
+> ViewSet과 지향하는 의미는 비슷하지만 더 원초적인 의미에서 합쳐놓은 친구
+
+
+```python
+from snippets.models import Snippet
+from snippets.serializers import SnippetSerializer
+from rest_framework import generics
+
+# ListCreateAPIView 
+class SnippetList(generics.ListCreateAPIView):
+    queryset = Snippet.objects.all()
+    serializer_class = SnippetSerializer
+
+# RetrieveUpdateDestroyAPIView
+# 직관적이다. retrieve, update, destroy를 지원한다.
+class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Snippet.objects.all()
+    serializer_class = SnippetSerializer
+```
