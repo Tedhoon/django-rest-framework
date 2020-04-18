@@ -4,6 +4,8 @@
 
 > 좀더 명확하게는 우리가 url_patterns에 써왔던 path함수의 두 번째인자에 묶어서 넣어주면 됨
 
+<br>
+
 ## as_view() 파헤치기
 
 as_view() 는 딕셔너리형태의 인자를 받음
@@ -24,6 +26,7 @@ TempViewSet.as_view({
 
         👇👇👇
 
+
 # 딕셔너리가 담긴 as_view를 객체에 넣어줍니다.
 router_path = TempViewSet.as_view({
     'get' : 'retrieve',
@@ -34,18 +37,17 @@ router_path = TempViewSet.as_view({
 
         👇👇👇
 
-path의 두번 째 인자에 넣어줍니다.
+
+# path함수의 두번 째 인자에 넣어줍니다.
+
+...
+
+url_patterns = [
+    path('url_name/', router_path, ..)
+]
 ```
 
-```python
-
-from rest_framework.routers import DefaultRouter
-
-router = DefaultRouter()
-router.register('url_prefix',)
-
-```
-
+<br>
 
 
 ## 명시적으로 Routing해주기 (Router 사용X)
@@ -90,12 +92,28 @@ urlpatterns = format_suffix_patterns([
 
 ```
 
+<br>
+
 ## Router를 사용한 라우팅
 
-🚫 ViewSet 만 사용가능(한 것 같다)
+> 🚫 ViewSet 만 사용가능!
 
 rest_framwork에 내장되어있는 router중 DefaultRouter는 이러한 관례적인 라우팅을 미리 묶어놓았기 때문에 쉽게 등록가능
+
 ```python
+# urls.py
 
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from snippets import views
 
+router = DefaultRouter()
+router.register('any_url/', views.SnippetViewSet)
+router.register('any_url2/', views.UserViewSet)
+
+# The API URLs are now determined automatically by the router.
+urlpatterns = [
+    path('', include(router.urls)),
+    # 위의 router을 path에 등록해주기만 하면 된다.
+]
 ```
