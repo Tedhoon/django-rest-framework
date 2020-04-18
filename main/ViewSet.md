@@ -127,3 +127,9 @@ rendering 시킬 Response의 형태(format)를 지정해줄 수 있음.
 
 url은 default값으로 custom method의 이름으로 지정됨
 - ~*/method_name
+
+url_path값에 명시적인 이름 지정가능
+```python
+# ex)
+@action(methods=['post'], permission_classes=[IsAdminOrIsSelf], url_path='my-custom-url')
+```

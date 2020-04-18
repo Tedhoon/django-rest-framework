@@ -10,6 +10,7 @@
 
 ![author](https://img.shields.io/badge/author-tedhoon-ff69b4.svg?style=flat-square)
 
+/play pushit
 </div>
 
 > DRF(django-rest-framework) backend 정리
@@ -28,6 +29,7 @@
     - [APIView](https://github.com/Tedhoon/django-rest-framework/blob/master/main/APIView.md)
     - [Mixins](https://github.com/Tedhoon/django-rest-framework/blob/master/main/Mixins.md)
     - [ViewSet](https://github.com/Tedhoon/django-rest-framework/blob/master/main/ViewSet.md)
+    - [Router](https://github.com/Tedhoon/django-rest-framework/blob/master/main/Router.md)
     
 
 
