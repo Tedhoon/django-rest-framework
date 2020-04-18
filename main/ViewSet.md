@@ -28,13 +28,25 @@ class GenericViewSet(ViewSetMixin, generics.GenericAPIView):
 
 
 
-
-## ReadOnlyModelViewSet 
+# ReadOnlyModelViewSet 
 class ReadOnlyModelViewSet(mixins.RetrieveModelMixin,
                            mixins.ListModelMixin,
                            GenericViewSet):
     
     # list(), retrieve() method를 가지고 있음
+
+    pass
+
+
+# ModelViewSet
+class ModelViewSet(mixins.CreateModelMixin,
+                   mixins.RetrieveModelMixin,
+                   mixins.UpdateModelMixin,
+                   mixins.DestroyModelMixin,
+                   mixins.ListModelMixin,
+                   GenericViewSet):
+
+    # create(), retreive(), update(), partial_update(), destroy(), list()
 
     pass
 
@@ -55,7 +67,8 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 
-# 모든 기본 기능이 내장되어있는 ModelViewSet
+
+# 거의 모든 기본 기능이 내장되어있는 ModelViewSet
 
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -86,14 +99,15 @@ class SnippetViewSet(viewsets.ModelViewSet):
 <br>
 
 
-## action decorater
+## :eyes: action decorater
+
+Custom API method들을 만들기 위해 사용
 
 ####  method 호출 방식
 - GET(default)
 - POST 👈 따로 지정해주어야함!
 
 #### renderer_classes
-
 rendering 시킬 Response의 형태(format)를 지정해줄 수 있음.
 - [rest_framework/renderers.py](https://github.com/encode/django-rest-framework/blob/master/rest_framework/renderers.py) 👈👈👈 참조하세여!
     - renderers.JSONRenderer (default : 1)
