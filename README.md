@@ -30,7 +30,9 @@
     - [Mixins](https://github.com/Tedhoon/django-rest-framework/blob/master/main/Mixins.md)
     - [ViewSet](https://github.com/Tedhoon/django-rest-framework/blob/master/main/ViewSet.md)
     - [Router](https://github.com/Tedhoon/django-rest-framework/blob/master/main/Router.md)
-    
+
+- ADVANCED
+    - [Authentication](https://github.com/Tedhoon/django-rest-framework/blob/master/advanced/Authentication.md)
 
 
 ## Reference
