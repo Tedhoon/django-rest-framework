@@ -36,6 +36,7 @@ class GenericAPIView(views.APIView):
 👇👇👇
 
 ### Overwriting 하는 방법
+> PagiNumberPagination을 자주 사용할 것이기 때문에 이를 기준으로 작성했습니다!
 
 ```python
 # 우리의 settings.py
@@ -44,8 +45,37 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100
 }
 ```
+> 당연히 다른 settings 값들도 위와 같이 key값을 참조하여 쓸 수 있겠습니다! 🤓
+
+<br>
 
 
+## CustomPagination
+> 사실 그냥 class overwriting이다!
+
+예시)
+```python
+...
+from rest_framework import pagination
+
+# pagination.py 하나 만들어서 분리하면 좋겠져?
+class CumtomPagination(pagination.PageNumberPagination):
+    page_size = 5
+
+
+class MyViewSet(viewsets.ModelViewSet):
+    queryset = Model.objects.all().order_by('-id')
+    serializer_class = MySerializer
+    pagination_class = CustomPagination
 ```
+🙌 요 상황은 전역의 pagination관련 설정이 되어있을 때 살짝 커스텀하는 경우!
 
-## PagiNumberPagination
+만약 전역설정을 안했을 시 pagination은 모두 None으로 설정되어있기 때문에 기본 CBV들에 바로 pagination 설정을 해줘도 되겠습니당.
+
+
+
+<br>
+
+## 페이지네이션 국룰! 🐱‍🐉
+> 페이지네이션 수행 전에는 반드시 정!렬! 해줄 것!(당연한 말 괜히 강조)
+
