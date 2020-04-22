@@ -32,7 +32,9 @@
     - [Router](https://github.com/Tedhoon/django-rest-framework/blob/master/main/Router.md)
 
 - ADVANCED
+    - [Pagination](https://github.com/Tedhoon/django-rest-framework/blob/master/advanced/Pagination.md)
     - [Authentication](https://github.com/Tedhoon/django-rest-framework/blob/master/advanced/Authentication.md)
+
 
 
 ## Reference
