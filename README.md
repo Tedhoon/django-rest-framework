@@ -10,7 +10,8 @@
 
 ![author](https://img.shields.io/badge/author-tedhoon-ff69b4.svg?style=flat-square)
 
-/play pushit
+<br>
+
 </div>
 
 > DRF(django-rest-framework) backend 정리
