@@ -35,11 +35,21 @@ class MyViewSet(viewsets.ModelViewSet):
         return qs
 ```
 
+### Setting filter backends
+전역으로 filter backend 설정하기! 
+```python
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+```
+
+<br>
+
 ## Search 예제
 ```python
 ...
+# 만들어진 SearchFilter 사용해보기!
 from rest_framework.filters import SearchFilter
-
 
 class MyViewSet(viewsets.ModelViewSet):
     queryset = Models.objects.all()
@@ -50,4 +60,17 @@ class MyViewSet(viewsets.ModelViewSet):
 
     # 어떤 칼럼을 기반으로 검색을 할건지
     search_fields = ('title', ...)
+```
+### search URL
+```
+http://www.myurl.com/temp?search=내용
+```
+### search_fields 활용법
+- '^' Starts-with search.
+- '=' Exact matches.
+- '@' Full-text search. (Postgresql만 지원...갓끼리🐘)
+- '$' Regex search.
+```python
+# ex)
+search_fields = ['=username', '=email']
 ```
