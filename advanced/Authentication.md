@@ -92,9 +92,10 @@ def example_view(request, format=None):
 
 ## TokenAuthentication
 > 가장 중요한 TokenAuthentication!
+
 > Mobile Client에 적합
 
-### Token을 생성해보자! [참조](https://github.com/encode/django-rest-framework/tree/master/rest_framework/authtoken) 👈
+#### Token을 생성해보자! [참조](https://github.com/encode/django-rest-framework/tree/master/rest_framework/authtoken) 👈
 ```python
 # authtoken/models.py
 
@@ -157,6 +158,8 @@ INSTALLED_APPS = [
             if created:
                 Token.objects.create(user=instance)
         ```
+
+
 3. Token 획득
     - 토큰을 획득할 수 있는 url지정 후
     ```python
@@ -172,7 +175,17 @@ INSTALLED_APPS = [
     - 해당 url에 POST요청 🤷‍♂️
 
 
+
 4. 발급받은 토큰을 API요청에 담기!
+
+    Authorization HTTP header에 token을 같이 담아줍니다! 👇👇👇
+    ```shell
+    Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
+    ```
+    json형식은
+    ```js
+    { 'token' : '9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b' }
+    ```
 
     > 인증 성공시
     - request.user = Django의 User instance
@@ -180,13 +193,19 @@ INSTALLED_APPS = [
 
 <br>
 
-
 ## httpie 요청방법
-```
-# basicauthentication
-$ http --auth id:password --form POST url content
-```
-
+- basicauthentication
+    ```bash
+    $ http --auth id:password --form POST url content
+    ```
+- tokenauthentication
+    ```bash
+    $ http POST 주소/api-token-auth/ id="" pw=""
+    > 발급한 토큰확인
+    
+    $ http POST 주소/~/ "Authorization: Token 13weqwejkwqe125312~~~" content
+    > 토큰을 같이 보내주기
+    ```
 
 <br>
 
