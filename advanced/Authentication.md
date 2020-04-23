@@ -63,6 +63,7 @@ def example_view(request, format=None):
     - authentication은 성공했지만, permission 실패 시에도 raise
 
 <br>
+
 ## 종류
 
 - BasicAuthentication
@@ -78,6 +79,7 @@ def example_view(request, format=None):
 
 - SessionAuthentication
     - auth.login()이 수행될 때마다 발급되는 session정보를 참조해서 인증
+    - django.middleware를 참조하기 때문에 외부서비스에서 사용불가
 
 - RemoteUserAuthentication
     - User 정보가 다른 서비스에서 관리 될 때 사용
@@ -87,9 +89,102 @@ def example_view(request, format=None):
     - 요 메서드가 인증성공 시 (user, auth)라는 두 튜플을 리턴하고, 실패시 None을 리턴 
 <br>
 
+
+## TokenAuthentication
+> 가장 중요한 TokenAuthentication!
+> Mobile Client에 적합
+
+### Token을 생성해보자! [참조](https://github.com/encode/django-rest-framework/tree/master/rest_framework/authtoken) 👈
+```python
+# authtoken/models.py
+
+class Token(models.Model):
+    key = models.CharField(_("Key"), max_length=40, primary_key=True)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, related_name='auth_token',
+        on_delete=models.CASCADE, verbose_name=_("User")
+    ) 
+    # user column으로 OneToOneField()로 구현되어있음!
+    # settings.AUTH_USER_MODEL과 연결되어있음!!
+
+    created = models.DateTimeField(_("Created"), auto_now_add=True)
+
+    class Meta:
+        abstract = 'rest_framework.authtoken' not in settings.INSTALLED_APPS
+        verbose_name = _("Token")
+        verbose_name_plural = _("Tokens")
+
+    def save(self, *args, **kwargs):
+        if not self.key:
+            self.key = self.generate_key()
+        return super().save(*args, **kwargs)
+
+    def generate_key(self):
+        return binascii.hexlify(os.urandom(20)).decode()
+
+    def __str__(self):
+        return self.key
+```
+
+1. installed_app에 추가후 migrate수행
+```python
+INSTALLED_APPS = [
+    ...
+    'rest_framework.authtoken',
+    ...
+]
+```
+2. Token 발급 ✨
+    - [rest_framework/authtoken/views.py](https://github.com/encode/django-rest-framework/blob/master/rest_framework/authtoken/views.py)의 ObtainAuthToken을 이용한 생성 방법
+    
+    - CLI를 이용한 방법
+        ```bash
+        $ python manage.py drf_create_token <username>
+        $ python manage.py drf_create_token -r <username> # 재발급
+
+        # token 발급시 token이 있으면 기존의 token이 똑같이 발급되므로 새로운 token을 발급받으려면 옵션을 지정해주어야함!
+        ```
+
+    - :star: user생성시 signal과 receiver를 이용하여 자동으로 생성해주는 방법
+        ```python
+        from django.conf import settings
+        from django.db.models.signals import post_save # db에 저장(save()메서드) 직후에 특정 동작 수행명령
+        from django.dispatch import receiver
+        from rest_framework.authtoken.models import Token
+
+        @receiver(post_save, sender=settings.AUTH_USER_MODEL)
+        def create_auth_token(sender, instance=None, create=False, **kwargs):
+            if created:
+                Token.objects.create(user=instance)
+        ```
+3. Token 획득
+    - 토큰을 획득할 수 있는 url지정 후
+    ```python
+    # urls.py
+    from rest_framework.authtoken.views import obtain_auth_token
+
+    urlpatterns += [
+        path('api-auth/', include('rest_framework.urls')), 
+        path('api-token-auth/', obtain_auth_token), 👈👈👈
+        # 참고로 obtain_auth_token = ObtainAuthToken.as_view()
+    ]
+    ```
+    - 해당 url에 POST요청 🤷‍♂️
+
+
+4. 발급받은 토큰을 API요청에 담기!
+
+    > 인증 성공시
+    - request.user = Django의 User instance
+    - request.auth = rest_framework.authtoken.models.BasicToken
+
+<br>
+
+
 ## httpie 요청방법
 ```
-http --auth id:password --form POST url content
+# basicauthentication
+$ http --auth id:password --form POST url content
 ```
 
 
@@ -97,4 +192,4 @@ http --auth id:password --form POST url content
 
 ## :bulb: 추후 업데이트 예정!
 Django-rest-knox library 등..
-뭔가 빈약한 설명이었기에 추후 계속 업데이트 하겠음!
+중요한 친구들은 추후 계속 업데이트 하겠음!
