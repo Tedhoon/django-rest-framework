@@ -62,18 +62,19 @@ def example_view(request, format=None):
     - `WWW-Authenticate` header 미포함
     - authentication은 성공했지만, permission 실패 시에도 raise
 
-
+<br>
 ## 종류
 
 - BasicAuthentication
     - HTTP 자체 기본인증 방식
     - HTTP 제어 헤더로 넘긴 ID, PW를 base64로 encoding
-    - base64를 사용하기 때문에 굉장히 보안에 취약함
+    - base64를 사용하기 때문에 굉장히 보안에 취약함(테스트에 적합)
     - SSL과 같이 쓰면 그나마 괜찮!
 
 - TokenAuthentication
     - 유일한 token(key값)을 발급
     - token 헤더
+    - SSL을 당연히 권장
 
 - SessionAuthentication
     - auth.login()이 수행될 때마다 발급되는 session정보를 참조해서 인증
@@ -81,9 +82,19 @@ def example_view(request, format=None):
 - RemoteUserAuthentication
     - User 정보가 다른 서비스에서 관리 될 때 사용
 
-
+- Custom authentication
+    - subclass로 BaseAuthentication를 만들고 `.authenticate(self, request)` 메서드를 오버라이딩 시키면 됨
+    - 요 메서드가 인증성공 시 (user, auth)라는 두 튜플을 리턴하고, 실패시 None을 리턴 
+<br>
 
 ## httpie 요청방법
 ```
 http --auth id:password --form POST url content
 ```
+
+
+<br>
+
+## :bulb: 추후 업데이트 예정!
+Django-rest-knox library 등..
+뭔가 빈약한 설명이었기에 추후 계속 업데이트 하겠음!
