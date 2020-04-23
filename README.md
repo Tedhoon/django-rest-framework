@@ -36,6 +36,7 @@
     - [Pagination](https://github.com/Tedhoon/django-rest-framework/blob/master/advanced/Pagination.md)
     - [filter & Search](https://github.com/Tedhoon/django-rest-framework/blob/master/advanced/Filter&Search.md)
     - [Authentication](https://github.com/Tedhoon/django-rest-framework/blob/master/advanced/Authentication.md)
+    - [Permission](https://github.com/Tedhoon/django-rest-framework/blob/master/advanced/Permission.md)
 
 
 
