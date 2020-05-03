@@ -121,3 +121,34 @@ http --form post "http~" title="title" body="body"
 
     - `504` Gateway Timeout<br>
     이 오류 응답은 서버가 게이트웨이 역할을 하고 있으며 적시에 응답을 받을 수 없을 때 주어진다.
+
+
+### 유명 서비스 상태코드 벤치마킹
+- 200 - ok
+  - request 성공
+  - ex) resource 목록/resource 상세/resource 수정/그외 대부분의 API 성공
+- 201 - create
+  - request 성공
+  - ex) resource 생성 성공
+- 204 - no content
+  - request 성공
+  - ex) resource 삭제 성공
+- 301 - move permanently
+  - 페이지 이동
+- 307 - temporary_redirect
+  - 임시 페이지 이동
+- 400 - bad_request
+  - request 실패
+  - ex) 유효성 검사 통과 실패, 잘못된 요청
+- 401 - unauthorized
+  - 인증 실패
+  - ex) 세션 없음, 로그인 실패
+- 403 - forbidden
+  - 인증은 성공했으나 권한이 없음
+  - ex) 권한없는 자원에 접근하려함
+- 404 - not_found
+  - API 없음
+  - ex) route 조회 실패
+- 500 - internal_server_error
+  - 오류
+  - ex) 서버오류, exception
