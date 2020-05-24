@@ -30,6 +30,8 @@ http --form POST 대상주소 GET인자 = 값 POST인자 == 값
 http --form post "http~" title="title" body="body"
 ```
 
+## drf status code
+[Click me 🔥](https://github.com/encode/django-rest-framework/blob/master/rest_framework/status.py)
 
 ## Http Response code 
 
@@ -152,3 +154,4 @@ http --form post "http~" title="title" body="body"
 - 500 - internal_server_error
   - 오류
   - ex) 서버오류, exception
+
