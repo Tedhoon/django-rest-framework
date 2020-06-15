@@ -57,3 +57,6 @@ urlpatterns = [
 
 # 참고로 BasicAuthentication에서는 안돌아갑니당
 ```
+
+## request.user
+Permission이 적용되면 request에 user가 담김
